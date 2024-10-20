@@ -3,6 +3,9 @@ import {SequelizeModule} from "@nestjs/sequelize";
 import * as process from "process";
 import {ConfigModule} from "@nestjs/config";
 import { UsersModule } from './users/users.module';
+import { QuotesModule } from './quotes/quotes.module';
+import { LeaderboardModule } from './leaderboard/leaderboard.module';
+import { StatisticsModule } from './statistics/statistics.module';
 
 @Module({
   imports: [
@@ -19,6 +22,9 @@ import { UsersModule } from './users/users.module';
         models: [],
         autoLoadModels:true,
       }),
-      UsersModule,],
+      UsersModule,
+      QuotesModule,
+      LeaderboardModule,
+      StatisticsModule,],
 })
 export class AppModule {}
