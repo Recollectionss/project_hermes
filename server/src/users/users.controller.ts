@@ -13,14 +13,14 @@ export class UsersController {
 
     @ApiOperation({summary:"get user"})
     @ApiResponse({status:200, type:User})
-    @Get(`:id`)
-    read(@Param('id', ParseIntPipe) id: number){
+    @Get(`/:id`)
+    get(@Param('id', ParseIntPipe) id: number){
         return this.userService.selectUser(id);
     }
 
     @ApiOperation({summary:"create user"})
     @ApiResponse({status:200, type:User})
-    @Post()
+    @Post("/")
     create(@Body() userDto: CreateUserDto){
         return this.userService.createUser(userDto);
     }
@@ -34,7 +34,7 @@ export class UsersController {
 
     @ApiOperation({summary: " delete user"})
     @ApiResponse({status:200})
-    @Delete(":id")
+    @Delete("/:id")
     delete(@Param('id',ParseIntPipe) id: number){
         return this.userService.deleteUser(id);
     }

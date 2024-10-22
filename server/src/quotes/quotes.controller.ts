@@ -10,7 +10,7 @@ export class QuotesController {
 
     @ApiOperation({summary:"get text from baconipsum.com"})
     @ApiResponse({status:200, type:String})
-    @Get()
+    @Get("/")
     async getText(){
         return this.quotesService.getText();
     }

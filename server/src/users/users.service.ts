@@ -14,16 +14,11 @@ export class UsersService {
     }
 
     async createUser(dto:CreateUserDto){
-        const findUser = await this.userRepository.findOne({})
-        const user = await this.userRepository.create(dto);
-        return user;
+        return await this.userRepository.create(dto);
     }
 
     async updateUser(dto: UpdateUserDto): Promise<User> {
         const user = await this.userRepository.findByPk(dto.id);
-        if (!user) {
-            throw new Error("User not found");
-        }
 
         user.username = dto.username;
         user.email = dto.email;
@@ -36,9 +31,6 @@ export class UsersService {
 
     async deleteUser(id: number): Promise<void> {
         const user = await this.userRepository.findByPk(id);
-        if (!user) {
-            throw new Error('User not found');
-        }
 
         user.isDelete = true;
         await user.save();
